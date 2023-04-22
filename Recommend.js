@@ -5,15 +5,53 @@
 // - location: string (city name or "remote")
 // - experience: string
 // - price: float
+// - tutor and tutee are single objects while tutors and tutees are arrays of all of the respective objects.
 
 class Tutor {
-  constructor(name, rating, subjects, location, experience, price) {
-    this.name = name;
-    this.rating = rating;
+  constructor(
+    firstname,
+    lastname,
+    email,
+    password,
+    subjects,
+    location,
+    experience,
+    price,
+    interests
+  ) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.password;
+    this.rating = -1;
     this.subjects = subjects;
     this.location = location;
     this.experience = experience;
     this.price = price;
+    this.interests = interests;
+  }
+}
+
+class Tutee {
+  constructor(
+    firstName,
+    lastName,
+    email,
+    password,
+    location,
+    subjects,
+    gpa,
+    interests
+  ) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+    this.location = location;
+    this.subjects = subjects;
+    this.gpa = gpa;
+    this.interests;
+    this.matches = []; // Array to store Tutor objects that the Tutee matches with
   }
 }
 
@@ -54,4 +92,24 @@ function recommendTutors(tutee, tutors) {
   }
 
   return matchingTutors;
+}
+
+function recommendTutees(tutor, tutees) {
+  const matchingTutees = tutees.filter((tutee) => {
+    return tutee.location === tutor.location;
+  });
+
+  matchingTutees.sort((a, b) => {
+    if (a.location === tutor.location && b.location === tutor.location) {
+      return Math.random() - 0.5; // Randomize order within location group
+    } else if (a.location === tutor.location) {
+      return -1; // Move Tutees with same location to the front
+    } else if (b.location === tutor.location) {
+      return 1; // Move Tutees with same location to the front
+    } else {
+      return 0;
+    }
+  });
+
+  return matchingTutees;
 }
