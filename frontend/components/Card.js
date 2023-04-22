@@ -5,20 +5,22 @@ import Layout from '../constants/Layout'
 
 const BOTTOM_BAR_HEIGHT = !Platform.isPad ? 29 : 49 // found from https://stackoverflow.com/a/50318831/6141587
 
-export const Card = ({ pic, title, caption, aboutme }) => (
-  <Tile
-    imageSrc={pic}
-    imageContainerStyle={styles.imageContainer}
-    activeOpacity={0.9}
-    title={title}
-    titleStyle={styles.title}
-    caption={caption}
-    captionStyle={styles.caption}
-    containerStyle={styles.container}
-    featured
-
-  />
-)
+export function Card (props) {
+  return (
+    <Tile
+      key={props.id}
+      imageSrc={props.pic}
+      imageContainerStyle={styles.imageContainer}
+      activeOpacity={0.9}
+      title={props.title}
+      titleStyle={styles.title}
+      caption={props.caption}
+      captionStyle={styles.caption}
+      containerStyle={styles.container}
+      featured
+    />
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
