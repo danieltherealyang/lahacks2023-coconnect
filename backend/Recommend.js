@@ -29,6 +29,7 @@ class Tutor {
     this.experience = experience;
     this.price = price;
     this.interests = interests;
+    this.matches = []; // Array to store Tutor objects that the Tutee matches with
   }
 }
 
@@ -50,7 +51,7 @@ class Tutee {
     this.location = location;
     this.subjects = subjects;
     this.gpa = gpa;
-    this.interests;
+    this.interests = interests;
     this.matches = []; // Array to store Tutor objects that the Tutee matches with
   }
 }
