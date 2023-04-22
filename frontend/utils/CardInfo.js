@@ -1,1 +1,1 @@
-//export function CardInfo (cardIndex)
+//export function CardInfo (cardIndex) {}
