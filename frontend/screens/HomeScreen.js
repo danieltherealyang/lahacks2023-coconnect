@@ -1,4 +1,4 @@
-import { Text } from "react-native";
+import React from "react";
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Swiper from 'react-native-deck-swiper'
 import { Card } from '../components/Card'
@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
             <SafeAreaView style={styles.container}>
         <Swiper
           cards={HomeScreenPics}
-          renderCard={Card}
+          //renderCard={Card}
           infinite
           backgroundColor="white"
           cardHorizontalMargin={0}
