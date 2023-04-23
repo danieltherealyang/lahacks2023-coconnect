@@ -1,10 +1,14 @@
 import React from 'react'
-import { Image, SafeAreaView, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native'
 import { Divider, Icon, Text } from 'react-native-elements'
 import Layout from '../constants/Layout'
 import { HomeScreenPics } from '../constants/Pics'
 import { randomNo } from '../utils/randomNo' //####Remove after connecting with database
 
+const fetchFonts = async () =>
+  await Font.loadAsync({
+    'Inter': require('../assets/font/Inter-Black.ttf'),
+  });
 
 const { pic, title } = HomeScreenPics[randomNo(1, HomeScreenPics.length)]
 
@@ -21,6 +25,8 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       //* Profile Card Content *//
+      <ScrollView contentContainerStyle={{ width: '100%', height: '180%' }}
+      style ={styles.scrollview}>
       <SafeAreaView style={styles.container}>
         <View style={styles.imageContainer}>
           <Image source={pic} style={styles.image} />
@@ -30,7 +36,7 @@ class ProfileScreen extends React.Component {
           {title}
         </Text>
         <Text style={styles.desc}>Sophomore at UCLA</Text>
-        <Divider style={styles.divider} />
+        
          
          {/* Profile Attributes */}
 
@@ -45,9 +51,33 @@ class ProfileScreen extends React.Component {
           <Text style={styles.classesTextThree}>CS69</Text>
         </TouchableOpacity>
         </View>
+        <Divider style={styles.divider} />
+
+        {/* Description Boxes */}
+
+        <Text h5 style={styles.descriptionTitle}>
+        Avaliable Tutorings
+        </Text>
+
+        <View style={styles.descriptionBox}>
+          <Text style={styles.descriptionBoxContent}>
+            Sundays 2-3 p.m Weeknights 1-3 a.m I'm a night owl so I can help you!
+            </Text>
+        </View>
+
+        <Text h5 style={styles.descriptionTitle}>
+        Experiences
+        </Text>
+
+        <View style={styles.descriptionBox}>
+          <Text style={styles.descriptionBoxContent}>
+            UCLA Derby Scholar. Expected Honors. Math is my passion, would be happy to help you in any way I can!
+            </Text>
+        </View>
+
+       
 
         <Text style={styles.desc}>
-          I am a scholar, i have 30 hours of coaching
         </Text>
         <Divider style={styles.divider} />
 
@@ -58,6 +88,7 @@ class ProfileScreen extends React.Component {
           <Social name="facebook-square" />
         </View>
       </SafeAreaView>
+      </ScrollView>
     )
   }
 }
@@ -66,6 +97,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+  },
+  scrollView: {
+    flexGrow: 1,
   },
   imageContainer: {
     margin: 20,
@@ -79,18 +113,29 @@ const styles = StyleSheet.create({
     color: '#5E5E5E',
     alignSelf: 'flex-start',
     marginLeft: 30,
+    //fontFamily: 'Inter',
+  },
+  descriptionTitle:
+  {
+    color: '#5E5E5E',
+    alignSelf: 'flex-start',
+    marginLeft: 30,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    paddingVertical: 5,
   },
   desc: {
     color: '#5E5E5E',
     alignSelf: 'flex-start',
     marginTop: 5,
     marginHorizontal: 30,
+    marginBottom: 5,
     fontSize: 14,
   },
   divider: {
     backgroundColor: '#C0C0C0',
-    width: Layout.window.width - 60,
-    margin: 20,
+    width: Layout.window.width - 20,
+    margin: 10,
   },
   socialLinks: {
     flex: 1,
@@ -158,8 +203,39 @@ const styles = StyleSheet.create({
   classesContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 10,
     width: "90%"
+  },
+  descriptionBox: {
+    width: 370,
+    height: 200,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5,
+    
+  },
+  descriptionBoxes: {
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  descriptionBoxTitle: {
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  descriptionBoxContent: {
+    width: 370,
+    height: 200,
+    fontSize: 16,
+    fontWeight: 'normal',
+    textAlign: 'left',
+    paddingHorizontal: 7,
+    paddingVertical: 7,
   },
 })
 
