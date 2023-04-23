@@ -34,15 +34,15 @@ class ProfileScreen extends React.Component {
          
          {/* Profile Attributes */}
 
-         <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Intro Korean</Text>
+         <View style={styles.classesContainer}>
+        <TouchableOpacity style={styles.classesOne}>
+          <Text style={styles.classesTextOne}>Intro Korean</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.buttonText}>Chinese 101</Text>
+        <TouchableOpacity style={styles.classesTwo} >
+          <Text style={styles.classesTextTwo}>Chinese 101</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} >
-          <Text style={styles.buttonText}>CS69</Text>
+        <TouchableOpacity style={styles.classesThree} >
+          <Text style={styles.classesTextThree}>CS69</Text>
         </TouchableOpacity>
         </View>
 
@@ -108,21 +108,57 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     marginBottom: 5,
   },
-  button: {
+  classesOne: {
     backgroundColor: 'transparent',
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: 'green',
     borderRadius: 15,
     padding: 10,
     marginLeft: 10,
     marginRight: 10,
   },
-  buttonText: {
-    color: 'white',
+  classesTwo: {
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: 'red',
+    borderRadius: 15,
+    padding: 10,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  classesThree: {
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: 'yellow',
+    borderRadius: 15,
+    padding: 10,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  classesTextOne: {
+    color: 'green',
     fontWeight: 'bold',
     textAlign: 'center',
     justifyContent: 'center'
-  }
+  },
+  classesTextTwo: {
+    color: 'red',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  classesTextThree: {
+    color: 'yellow',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  classesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+    width: "90%"
+  },
 })
 
 export default ProfileScreen
