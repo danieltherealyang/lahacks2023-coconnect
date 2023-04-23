@@ -22,10 +22,10 @@ const MessageBubble = ({ text, align }) => {
 
 export default function MessageScreen({navigation}) {
   const [messageBubbles, setMessageBubbles] = useState([
-    { text: 'Hello', align: 'left' },
-    { text: 'Hi there, how are you?', align: 'right' },
-    { text: "I'm good, thanks for asking. How about you?", align: 'left' },
-    { text: "I'm doing great too, thanks", align: 'right' },
+    { text: "12 o' Clock at starbucks? Calculus 3 right?", align: 'left' },
+    { text: 'yea! How much do I owe you?', align: 'right' },
+    { text: "Don't worry about it, you can get me coffee next time", align: 'left' },
+    { text: "omg, thanks", align: 'right' },
   ]);
 
   const addMessage = (text) => {
