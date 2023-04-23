@@ -1,7 +1,8 @@
-export const Messages = 
+export const Messages = [
     {
-      pic: require('../assets/images/women/women1.jpg'),
-      title: 'Jenny, 12',
-      message: "12 o' Clock at starbuck",
+      id: 1,
+      pic: require('../assets/images/tutee/tutee1.jpg'),
+      title: 'Jenny, 21',
+      message: "12 o' Clock at starbucks? Calculus 3 right",
     }
-
+  ]

@@ -13,5 +13,5 @@ exports.writeToJson = function (data) {
     const existingJson = readJsonFile()
     const updatedJson = JSON.stringify(existingJson.concat(data))
     writeJsonFile(updatedJson)
-    
+
 }

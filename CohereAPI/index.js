@@ -2,6 +2,7 @@ const cohere = require("cohere-ai")
 const express = require("express")
 const cors = require("cors")
 const {writeToJson } = require("./utils")
+
 require("dotenv").config()
 
 const app = express()
