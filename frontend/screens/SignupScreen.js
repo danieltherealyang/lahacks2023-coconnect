@@ -1,16 +1,21 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../theme';
 import Mask from '../assets/Mask';
 
-export default function LoginScreen({ navigation }) {
+export default function SignupScreen({ navigation }) {
+  const [fullName, setFullName] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [hidePassword, setHidePassword] = React.useState(true);
 
-  const handleLogin = () => {
-    navigation.navigate('BottomTab');
+  const handleSignup = () => {
+    // Perform sign up logic here
+    // For example, send data to server or store data locally
+    // Then navigate to the main screen
+    navigation.navigate('Notification');
   };
 
   return (
@@ -21,6 +26,23 @@ export default function LoginScreen({ navigation }) {
       <Image style={styles.logo}
         source={require('../assets/Logo.png')}
       />
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Full Name</Text>
+        <TextInput
+          style={styles.input}
+          value={fullName}
+          onChangeText={setFullName}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+      </View>
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Username</Text>
         <TextInput
@@ -47,8 +69,8 @@ export default function LoginScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.loginButtonText}>Log In</Text>
+      <TouchableOpacity style={styles.createAccButton} onPress={handleSignup}>
+        <Text style={styles.createAccButtonText}>Create Account</Text>
       </TouchableOpacity>
     </View>
   );
@@ -59,7 +81,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: COLORS.blue
+    backgroundColor: COLORS.turquoise
   },
   background: {
     position: 'absolute',
@@ -92,11 +114,11 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 15,
     width: '100%',
     padding: 10,
-    backgroundColor: "white"
+    backgroundColor: 'white'
   },
   passwordInputContainer: {
     flexDirection: 'row',
@@ -104,25 +126,26 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 15,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 15,
-    backgroundColor: "white"
+    backgroundColor: 'white'
   },
   passwordInput: {
     flexGrow: 1,
     padding: 10,
-    paddingRight: 35
+    paddingRight: 35 // to account for the eye icon
   },
-  loginButton: {
+  createAccButton: {
     width: '80%',
+    backgroundColor: 'black',
     borderRadius: 15,
     marginTop: 8,
     padding: 10,
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 2,
-    marginBottom: "40%"
+    marginBottom: '10%'
   },
-  loginButtonText: {
+  createAccButtonText: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
