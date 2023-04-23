@@ -13,12 +13,17 @@ import { Card } from "../components/Card";
 import { HomeScreenPics } from "../constants/Pics";
 import {COLORS} from '../theme';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [congratsVisible, setCongratsVisible] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const closeCongrats = () => {
+    setCongratsVisible(false);
   };
 
   const handleOnTapCard = (index) => {
@@ -28,6 +33,16 @@ export default function HomeScreen() {
 
   const handleNo = () => {
     closeModal();
+  };
+
+  const handleYes = () => {
+    setCongratsVisible(true);
+  };
+
+  const handleContinue = () => {
+    closeCongrats();
+    closeModal();
+    navigation.navigate("Chat");
   };
 
   return (
@@ -70,6 +85,9 @@ export default function HomeScreen() {
               <Text style={styles.modalText}>
                 {HomeScreenPics[cardIndex].aboutme}
               </Text>
+              <View style={{width: "100%", justifyContent: 'right'}}>
+                <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>Available Courses</Text>
+              </View>
               <View style={styles.row}>
                 <View style={[styles.box, {backgroundColor: "#FDE9E9"}]}>
                   <Text style={[styles.text, {color: "#CD3636", fontWeight: "bold"}]}>Algebra 2 ($32/hr)</Text>
@@ -77,6 +95,9 @@ export default function HomeScreen() {
                 <View style={[styles.box, {backgroundColor: "#D9F9E6"}]}>
                   <Text style={[styles.text, {color: "#399A69", fontWeight: "bold"}]}>Korean ($15/hr)</Text>
                 </View>
+              </View>
+              <View style={{width: "100%", justifyContent: 'right'}}>
+                <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>Experience</Text>
               </View>
               <View style={styles.row}>
                 <View style={[styles.box, {backgroundColor: "#EFEFEF"}]}>
@@ -87,7 +108,7 @@ export default function HomeScreen() {
                 </View>
               </View>
               <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]} onPress={handleNo}>
+                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]} onPress={handleNo}>
                   <View style={styles.iconContainer}>
                     <Image source={require('../assets/HalfCoconut.png')} style={styles.icon} />
                   </View>
@@ -97,7 +118,7 @@ export default function HomeScreen() {
                     </View>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#8DB3C0'}]}>
+                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#8DB3C0'}]} onPress={handleYes}>
                   <View style={styles.iconContainer}>
                     <Image style={styles.icon} source={require('../assets/Coconut.png')} />
                   </View>
@@ -105,12 +126,52 @@ export default function HomeScreen() {
               </View>
             </View>
           </View>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={congratsVisible}
+            onRequestClose={closeCongrats}
+          >
+            <TouchableOpacity onPress={closeCongrats} style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: 'rgba(0, 0, 0, 0.50)'}}/>
+            <View style={styles.congratsModalContainer}>
+              <Image style={{width: 200, height: 200, position: "absolute", top: 0, marginTop: -100}} source={require('../assets/HalfCoconut.png')}/>
+              <Text style={{color: "#397291", fontSize: 20, fontWeight: 'bold', marginTop: 20, marginBottom: 20}}>Congratulations! You were matched!</Text>
+              <TouchableOpacity onPress={handleContinue} style={styles.continueButton}>
+                <Text style={styles.continueButtonText}>Continue</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
         </Modal>
       </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  continueButtonText: {
+    color: "white",
+    fontWeight: 'bold'
+  },
+  continueButton: {
+    backgroundColor: 'black',
+    alignItems: 'center',
+    padding: 12,
+    width: "80%",
+    borderRadius: 15,
+    marginBottom: 20
+  },
+  congratsModalContainer: {
+    position: "absolute", 
+    top: "50%", 
+    left: "50%", 
+    width: 380, 
+    height: 200, 
+    marginLeft: -190, 
+    marginTop: -100, 
+    backgroundColor: 'white',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+  },
   buttonContainer: {
     alignItems: 'center',
     justifyContent: 'center',

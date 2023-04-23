@@ -43,7 +43,7 @@ export default function MessageScreen({navigation}) {
         <TouchableOpacity onPress={() => {navigation.navigate("BottomTab")}} style={styles.backButton}>
           <Ionicons name="chevron-back" size={24} color="black" />
         </TouchableOpacity>
-        <View style={styles.profile}>
+        <TouchableOpacity onPress={() => {navigation.navigate("Payment")}} style={styles.profile}>
           <Image
             style={styles.profilePic}
             source={require('../assets/images/tutee/tutee1.jpg')}
@@ -52,7 +52,7 @@ export default function MessageScreen({navigation}) {
             style={styles.badge}
             source={require('../assets/Coconut.png')}
           />
-        </View>
+        </TouchableOpacity>
         <View style={[styles.box, {backgroundColor: "#FDE9E9"}]}>
           <Text style={[styles.text, {color: "#CD3636", fontWeight: "bold"}]}>Algebra 2</Text>
         </View>
@@ -69,7 +69,7 @@ export default function MessageScreen({navigation}) {
           <View style={styles.inputBubble}>
             <TextInput style={styles.input} placeholder="Type a message..." value={text} onChangeText={(value) => setText(value)} />
           </View>
-          <TouchableOpacity style={{marginRight: 10}} onPress={() => {addMessage(text); setText('');}}>
+          <TouchableOpacity style={{marginRight: 20}} onPress={() => {addMessage(text); setText('');}}>
             <MaterialIcons name="send" size={24} color={COLORS.blue} />
           </TouchableOpacity>
         </View>
@@ -77,7 +77,6 @@ export default function MessageScreen({navigation}) {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   box: {
@@ -174,5 +173,6 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 16,
+    maxWidth: "100%"
   },
 });

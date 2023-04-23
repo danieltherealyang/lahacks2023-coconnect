@@ -14,6 +14,7 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupLoginScreen from '../screens/SignupLoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import NotificationScreen from '../screens/NotificationScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 
 import { COLORS } from '../theme';
 import SelectRoleScreen from '../screens/SelectRoleScreen';
@@ -33,6 +34,7 @@ export default function Navigator() {
         <Stack.Screen name="BottomTab" component={BottomTab} options={defaultScreenOptions}/>
         <Stack.Screen name="Chat" component={ChatScreen} options={defaultScreenOptions}/>
         <Stack.Screen name="Messages" component={MessageScreen} options={defaultScreenOptions}/>
+        <Stack.Screen name="Payment" component={PaymentScreen} options={defaultScreenOptions}/>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
