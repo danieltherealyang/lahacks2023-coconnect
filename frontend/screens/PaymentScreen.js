@@ -29,7 +29,7 @@ export default function PaymentScreen({navigation}) {
           <Text style={[styles.text, {color: "#CD3636", fontWeight: "bold"}]}>Algebra 2</Text>
         </View>
       </View>
-      <Text style={styles.profileName}>John Doe</Text>
+      <Text style={styles.profileName}>Jenny Doe</Text>
       <Text style={styles.profileStatus}>Apr 22, 2023</Text>
       <View style={{width: "60%", alignItems: 'center'}}>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 100, marginBottom: 20}}>
