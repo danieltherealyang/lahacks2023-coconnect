@@ -60,7 +60,7 @@ export default function HomeScreen() {
             <View style={styles.modalView}>
               <View style={styles.profilePictureContainer}>
                 <Image
-                  source={{ uri: 'https://source.unsplash.com/random/200x200' }}
+                  source={require('../assets/images/tutee/tutee1.jpg')}
                   style={[styles.profileImage]}
                 />
               </View>
@@ -87,12 +87,7 @@ export default function HomeScreen() {
                 </View>
               </View>
               <View style={{flexDirection: 'row'}}>
-                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#8DB3C0'}]}>
-                  <View style={styles.iconContainer}>
-                    <Image style={styles.icon} source={require('../assets/Coconut.png')} />
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]} onPress={handleNo}>
+              <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]} onPress={handleNo}>
                   <View style={styles.iconContainer}>
                     <Image source={require('../assets/HalfCoconut.png')} style={styles.icon} />
                   </View>
@@ -102,6 +97,11 @@ export default function HomeScreen() {
                     </View>
                   </View>
                 </TouchableOpacity>
+                <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#8DB3C0'}]}>
+                  <View style={styles.iconContainer}>
+                    <Image style={styles.icon} source={require('../assets/Coconut.png')} />
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -109,21 +109,6 @@ export default function HomeScreen() {
       </SafeAreaView>
   );
 }
-
-function NoButton() {
-  return (
-    <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]}>
-      <View style={styles.iconContainer}>
-        <Image source={require('../assets/HalfCoconut.png')} style={styles.icon} />
-      </View>
-      <View style={styles.noSymbolContainer}>
-        <View style={styles.noSymbol}>
-          <View style={styles.circle} />
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-};
 
 const styles = StyleSheet.create({
   buttonContainer: {

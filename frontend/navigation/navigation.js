@@ -17,6 +17,7 @@ import NotificationScreen from '../screens/NotificationScreen';
 
 import { COLORS } from '../theme';
 import SelectRoleScreen from '../screens/SelectRoleScreen';
+import MessageScreen from '../screens/MessageScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,12 +31,13 @@ export default function Navigator() {
         <Stack.Screen name="Notification" component={NotificationScreen} options={defaultScreenOptions}/>
         <Stack.Screen name="SelectRole" component={SelectRoleScreen} options={defaultScreenOptions}/>
         <Stack.Screen name="BottomTab" component={BottomTab} options={defaultScreenOptions}/>
+        <Stack.Screen name="Chat" component={ChatScreen} options={defaultScreenOptions}/>
+        <Stack.Screen name="Messages" component={MessageScreen} options={defaultScreenOptions}/>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={defaultScreenOptions}
         />
-        <Stack.Screen name="Chat" component={ChatScreen} options={defaultScreenOptions}/>
         <Stack.Screen name="Profile" component={ProfileScreen} options={defaultScreenOptions}/>
       </Stack.Navigator>
     </NavigationContainer>
