@@ -7,6 +7,7 @@ import {
   View,
   Text,
   Image,
+  ScrollView
 } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { Card } from "../components/Card";
@@ -75,7 +76,7 @@ export default function HomeScreen({navigation}) {
             <View style={styles.modalView}>
               <View style={styles.profilePictureContainer}>
                 <Image
-                  source={require('../assets/images/tutee/tutee1.jpg')}
+                  source={HomeScreenPics[cardIndex].pic}
                   style={[styles.profileImage]}
                 />
               </View>
@@ -85,28 +86,37 @@ export default function HomeScreen({navigation}) {
               <Text style={styles.modalText}>
                 {HomeScreenPics[cardIndex].aboutme}
               </Text>
-              <View style={{width: "100%", justifyContent: 'right'}}>
-                <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>Available Courses</Text>
-              </View>
-              <View style={styles.row}>
-                <View style={[styles.box, {backgroundColor: "#FDE9E9"}]}>
-                  <Text style={[styles.text, {color: "#CD3636", fontWeight: "bold"}]}>Algebra 2 ($32/hr)</Text>
+              <ScrollView style={{width: "100%"}} contentInset={{bottom: 150}}>
+                <View style={{width: "100%", justifyContent: 'right'}}>
+                  <Text style={{color: COLORS.turquoise, fontWeight: 'bold', fontSize: 14}}>Available Courses</Text>
                 </View>
-                <View style={[styles.box, {backgroundColor: "#D9F9E6"}]}>
-                  <Text style={[styles.text, {color: "#399A69", fontWeight: "bold"}]}>Korean ($15/hr)</Text>
+                <View style={styles.row}>
+                  <View style={[styles.box, {backgroundColor: "#FDE9E9"}]}>
+                    <Text style={[styles.text, {color: "#CD3636", fontWeight: "bold"}]}>Algebra 2 ($32/hr)</Text>
+                  </View>
+                  <View style={[styles.box, {backgroundColor: "#D9F9E6"}]}>
+                    <Text style={[styles.text, {color: "#399A69", fontWeight: "bold"}]}>Korean ($15/hr)</Text>
+                  </View>
                 </View>
-              </View>
-              <View style={{width: "100%", justifyContent: 'right'}}>
-                <Text style={{color: 'black', fontWeight: 'bold', fontSize: 14}}>Experience</Text>
-              </View>
-              <View style={styles.row}>
-                <View style={[styles.box, {backgroundColor: "#EFEFEF"}]}>
-                  <Text style={[styles.text, {color: "#414141", fontWeight: "bold"}]}>A+ in Algebra 2 ($32/hr)</Text>
+                <View style={{width: "100%", justifyContent: 'right'}}>
+                  <Text style={{color: COLORS.turquoise, fontWeight: 'bold', fontSize: 14}}>Experience</Text>
                 </View>
-                <View style={[styles.box, {backgroundColor: "#EFEFEF"}]}>
-                  <Text style={[styles.text, {color: "#414141", fontWeight: "bold"}]}>Young Arts Winner</Text>
+                <View style={styles.row}>
+                  <View style={[styles.box, {backgroundColor: "#EFEFEF"}]}>
+                    <Text style={[styles.text, {color: "#414141", fontWeight: "bold"}]}>A+ in Algebra 2 ($32/hr)</Text>
+                  </View>
+                  <View style={[styles.box, {backgroundColor: "#EFEFEF"}]}>
+                    <Text style={[styles.text, {color: "#414141", fontWeight: "bold"}]}>Young Arts Winner</Text>
+                  </View>
                 </View>
-              </View>
+                <View style={{width: "100%", justifyContent: 'right'}}>
+                  <Text style={{color: COLORS.turquoise, fontWeight: 'bold', fontSize: 14}}>Reviews</Text>
+                </View>
+                <Image
+                  style={{width: "100%", height: "50%", resizeMode: 'contain'}}
+                  source={require('../assets/Reviews.png')}
+                />
+              </ScrollView>
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity style={[styles.buttonContainer, {backgroundColor: '#E17272'}]} onPress={handleNo}>
                   <View style={styles.iconContainer}>
@@ -196,7 +206,6 @@ const styles = StyleSheet.create({
   },
   row: {
     backgroundColor: "#CFCFCF",
-    width: "100%",
     borderRadius: 15,
     paddingLeft: 20,
     paddingRight: 20,
